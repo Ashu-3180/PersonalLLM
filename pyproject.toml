@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personalllm"
+version = "0.0.1"
+description = "Small English decoder-only Transformer language model trained from randomly initialized weights."
+readme = "README.md"
+requires-python = ">=3.14.10,<3.15"
+authors = [
+    { name = "Asif Ahamad" }
+]
+keywords = ["language-model", "transformer", "education"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# Runtime dependencies are intentionally empty for M0.
+# PyTorch and other training libraries are not installed until approval.
+# See docs/compatibility.md for the verified CPU installation plan.
+dependencies = []
+
+[project.urls]
+Documentation = "docs/architecture.md"
+
+[project.optional-dependencies]
+# Optional groups are documented only. Do not install until approved.
+# cpu = ["torch"]  # CPU wheel from https://download.pytorch.org/whl/cpu
+# dev = ["pytest>=8.4.2"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+personalllm = ["py.typed"]

@@ -1,0 +1,46 @@
+# PersonalLLM default configuration (M0 scaffold).
+# This file records intended settings. Training and model code are not implemented yet.
+
+[project]
+name = "PersonalLLM"
+milestone = "M0"
+description = "Foundation only: project layout, local Python 3.14 environment, and documented architecture."
+
+[runtime]
+# Initial development is CPU-only. Do not assume a GPU is available.
+device = "cpu"
+seed = 42
+
+[paths]
+raw_data_dir = "data/raw"
+processed_data_dir = "data/processed"
+interim_data_dir = "data/interim"
+artifacts_dir = "artifacts"
+experiments_dir = "experiments"
+
+[data]
+# Licensed English text only. Collection is out of scope for M0.
+language = "en"
+source_policy = "licensed-only"
+
+[tokenizer]
+# Custom BPE is planned, not implemented.
+type = "bpe"
+vocab_size = 4000
+
+[model]
+# Preliminary targets for later milestones. Not implemented in M0.
+architecture = "decoder-only-transformer"
+initialization = "random"
+parameter_count_min = 1_000_000
+parameter_count_max = 5_000_000
+n_layers = 4
+context_length = 128
+vocab_size = 4000
+
+[training]
+objective = "causal-next-token-prediction"
+resume_from_checkpoint = true
+
+[evaluation]
+metrics = ["train_loss", "val_loss", "perplexity", "sample_generation"]
